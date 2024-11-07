@@ -1,6 +1,7 @@
 import { getAll, getById, removeById, updateById } from "./services.js";
 import { getParams, render } from "./utils.js";
 
+// 2 - Phần top 5 sp bán chạy
 const { products } = await getAll("products");
 products.sort((a, b) => a.rating - b.rating)
 const top5Products = products.slice(0, 5);
@@ -8,7 +9,7 @@ const top5Products = products.slice(0, 5);
 const hotSaleSection = document.getElementById("hot-sale-inner"); // rating
 render(hotSaleSection, top5Products);
 
-
+// 2 - Phần top 5 sp giảm giá
 products.sort((a, b) => a.discountPercentage - b.discountPercentage)
 const topfiveProdiscount = products.slice(0, 5);
 console.log('hotSaleSection: topfiveProdiscount', topfiveProdiscount);
@@ -16,17 +17,14 @@ const discountPercentageSection = document.getElementById("discount-percentage-i
 render(discountPercentageSection, topfiveProdiscount);
 
 // const Section = document.getElementById("hot-sale-inner"); // meta
-
-
-
 // render(hotSaleSection, products);
 
-const productId = getParams("id");
-const product = await getById("products", productId);
-
+// Lấy id trên url
+// const productId = getParams("id");
+// const product = await getById("products", productId);
 
 // Cách 2: Lấy toàn bộ sản phẩm về -> products. Khi cần sản phẩm chi tiết thì sử dụng products.find()
-console.log(product);
+// console.log(product);
 
 
 function getDetail() {

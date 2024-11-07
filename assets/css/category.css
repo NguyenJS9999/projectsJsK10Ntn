@@ -1,0 +1,37 @@
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0 5px;
+}
+#filterModule, .filter-sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    row-gap: 10px;
+    margin: 8px 0 15px;
+}
+.filter-btn, .filter-btn span {
+    font-size: 12px;
+    color: #444;
+}
+.filter-btn {
+    align-items: center;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    height: 34px;
+    padding: 5px 10px;
+    white-space: nowrap;
+    gap: 5px;
+    justify-content: center;
+}
+.filter-btn i {
+    font-size: 12px;
+}
+.fa-solid, .fas {
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 900;
+}
