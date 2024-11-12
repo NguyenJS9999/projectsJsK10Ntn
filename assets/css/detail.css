@@ -1,0 +1,329 @@
+
+/*  */
+.detail-heading-inner {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+.prd-heading {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+}
+.prd-heading-rate a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+}
+.ratings {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+.ratings i {
+    color: #e0e0e0;
+    font-size: 12px;
+    color: var(--rate-color);
+}
+.prd-heading-rate-label {
+    font-size: 13px;
+    color: #1873eb;
+    position: relative;
+    top: 2px;
+}
+
+/*  */
+/* Photo */
+.detail-gallery-col {
+    /* border: 1px solid red; */
+}
+/* infro common */
+.detail-info-inner {
+    background-color: var(--primary-red);
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.detail-info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.detail-price, .detail-price-flashSale {
+    padding: 15px 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.detail-price-flashSale {
+    flex: 1;
+    display: flex;
+}
+#countdown-detail {
+    text-align: end;
+    padding-right: 0.25rem;
+    display: none;
+}
+.detail-price-present {
+    width: 100%;
+}
+.detail-price-present span {
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 700;
+}
+span.option-price {
+    font-size: 18px !important;
+}
+.detail-price-present span {
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 700;
+}
+.detail-old-price {
+    font-size: 14px;
+    color: var(--white);
+    margin-right: 10px;
+}
+.detail-sale-percent {
+    font-size: 14px;
+    color: var(--white);
+}
+#countdown-detail>p {
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+#countdown-detail>ul {
+    display: flex;
+    gap: 4px;
+}
+#countdown-detail>ul>li {
+    width: 32px;
+    background-color: var(--white);
+    border-radius: 3px;
+}
+#countdown-detail>ul>li>span:first-child {
+    color: var(--primary-red);
+    text-align: center;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+}
+#countdown-detail>ul>span {
+    color: var(--white);
+}
+.detail-wrap ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.detail-wrap img {
+    width: 100%;
+}
+.detail-box {
+    background-color: var(--white);
+    border-radius: 4px;
+    padding: 10px;
+}
+/* Chỉnh số */
+.stock-infor {
+    /* border: 1px solid red; */
+}
+.stock-infor input {
+    border: 1px solid var(--border-color);
+    padding: 0 0.25rem;
+}
+.detail-sale {
+    margin-top: 0.5rem;
+    padding: 10px 0;
+    border-top: 1px dotted var(--secondary-red);
+    /* border-bottom: 1px dotted var(--secondary-red); */
+}
+.sale-title {
+    font-weight: 700;
+}
+.detail-sale li {
+    position: relative;
+    padding: 6px 0 6px 26px;
+}
+.detail-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.advisory-form {
+    margin-top: 10px;
+    background-color: var(--secondary-red);
+    border-radius: 4px;
+    padding: 5px 10px 10px;
+}
+.detail-sale li span {
+    background-color: var(--secondary-red);
+    border-radius: 50%;
+    color: var(--white);
+    display: inline-block;
+    font-size: 11px;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 2px;
+    text-align: center;
+    width: 16px;
+    position: absolute;
+    top: 8px;
+    left: 4px;
+}
+.detail-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.detail-action button {
+    width: calc(50% - 5px);
+    background-color: var(--secondary-red);
+    border-radius: 4px;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 7px 0;
+    text-align: center;
+    border: none;
+    min-height: 48px;
+    text-transform: uppercase;
+}
+.detail-action button.installment-button {
+    background-color: #fff;
+    border: 1px solid var(--secondary-red);
+    font-weight: 400;
+    text-transform: uppercase;
+    /* width: 100%; */
+    color: var(--secondary-red);
+    transition: all ease-in-out .3s;
+}
+.detail-action button {
+    width: calc(50% - 5px);
+    background-color: var(--secondary-red);
+    border-radius: 4px;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 7px 0;
+    text-align: center;
+    border: none;
+    min-height: 48px;
+    text-transform: uppercase;
+}
+.detail-action button.installment-button:hover {
+    background-color: var(--secondary-red);
+    color: #fff;
+}
+.advisory-form {
+    margin-top: 10px;
+    background-color: var(--secondary-red);
+    border-radius: 4px;
+    padding: 5px 10px 10px;
+}
+.af-top {
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px 10px 10px;
+}
+.af-top h3 {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+}
+.af-bottom {
+    display: flex;
+    gap: 10px;
+}
+
+.af-bottom button {
+    background: #ff0;
+    border-radius: 5px;
+    font-weight: 500;
+    margin: 0;
+    height: 38px;
+    color: var(--black);
+    border: none;
+    padding: 0 20px;
+}
+/* Thông tin chi tiết sp */
+.detail-specifications {
+    text-align: center;
+}
+.detail-specifications h2 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+}
+.detail-specifications ul {
+    padding: 15px 0;
+    max-height: 400px;
+    overflow-y: hidden;
+}
+.detail-specifications ul li:nth-child(2n+1) {
+    background-color: #f5f5f5;
+}
+.detail-specifications ul li {
+    display: flex;
+    padding: 10px;
+}
+.detail-specifications ul li .left {
+    width: 40%;
+    text-align: left;
+}
+
+.detail-specifications ul li p {
+    font-size: 14px;
+    line-height: 18px;
+}
+.detail-specifications ul li .right {
+    width: 60%;
+    text-align: left;
+}
+.detail-specifications ul li p {
+    font-size: 14px;
+    line-height: 18px;
+}
+.viewmore-specifications:hover {
+    background-color: var(--secondary-red);
+    color: var(--white);
+}
+.viewmore-specifications {
+    background: #fff;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    color: #212529;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    max-width: 335px;
+    text-decoration: none;
+    width: 100%;
+    gap: 5px;
+    transition: all ease-in-out .3s;
+}
+@media (min-width: 1200px) {
+    .h2, h2 {
+        font-size: 2rem;
+    }
+}

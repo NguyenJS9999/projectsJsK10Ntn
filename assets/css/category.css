@@ -11,27 +11,32 @@
     row-gap: 10px;
     margin: 8px 0 15px;
 }
-.filter-btn, .filter-btn span {
+.filter-btn, .filter-btn span, .filter-btn i {
     font-size: 12px;
     color: #444;
 }
 .filter-btn {
-    align-items: center;
-    background: #f3f4f6;
     border: 1px solid #e5e7eb;
+    background: #f3f4f6;
     border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    height: 34px;
-    padding: 5px 10px;
+    height: 2.5rem;
+    padding: 0 0.5rem;
     white-space: nowrap;
-    gap: 5px;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
+
 .filter-btn i {
     font-size: 12px;
 }
-.fa-solid, .fas {
-    font-family: "Font Awesome 6 Pro";
+.filter-area > .fa-solid, .filter-area .fas {
+    /* font-family: "Font Awesome 6 Pro"; */
     font-weight: 900;
+    color: var(--black);
+    cursor: pointer;
+    user-select: none;
 }
+
