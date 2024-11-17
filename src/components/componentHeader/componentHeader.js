@@ -1,13 +1,13 @@
 
 import { getProduct } from '../../../assets/js/category.js';
-import { searchState  } from '../../../assets/js/stores/headerStore.js';
-import { handleLocalStorage } from '../../../assets/js/utils.js';
+import { getAllCategory } from '../../../assets/js/services.js';
+import { globalState  } from '../../../assets/js/stores/headerStore.js';
+import { getLocalStorage, handleLocalStorage } from '../../../assets/js/utils.js';
 
 const componentHeader = document.getElementById('header');
 
-const headerElement = document.createElement('div');
-
 async function renderUI() {
+	const headerElement = document.createElement('div');
 	headerElement.innerHTML = /*html*/ `
     <div class="header-top">
 			<div class="header-top-inner">
@@ -111,10 +111,24 @@ async function renderUI() {
 }
 await renderUI();
 
+export const inputSearchAllElement = document.getElementById('search-all');
+const searchBtnElement = document.getElementById('search-btn');
+const headerStore = getLocalStorage('headerStore'); // !
+
+
+// function initGlobalState() {
+// 	const oldData = {...globalState};
+// 	handleLocalStorage("headerStore", globalState); // khỏi tạo galabal state vào local
+//
+// }
+// initGlobalState();
+
 const arrCategory = [];
 async function getListCategory () {
-	arrCategory = await fetch('https://dummyjson.com/products/category-list')
+	const result = await getAllCategory('products/category-list')
+	// console.log('getListCategory arrCategory: ', result);
 }
+getListCategory();
 
 // Logic click category điều hướng trang web
 const itemCategoryElement = document.querySelectorAll('.item-category');
@@ -123,43 +137,53 @@ itemCategoryElement.forEach((tab) => {
 });
 function handleCategoryClick(event) {
     const category = event.currentTarget.getAttribute("data-category");
-	searchState.urlHistory.push(window.location.href); // lưu url hiện tại
-	searchState.searching = false;
-	searchState.valueInputSearch= '',
-	handleLocalStorage("headerStore", searchState); // đưa data search vào localstorage chống mất khi f5
-	console.log('ở hàm handleCategoryClick ỉn ra category: ', category);
-	console.log('ở hàm handleCategoryClick ỉn ra searchState: ', searchState);
 
+	globalState.urlHistory = headerStore.urlHistory;
+	(globalState.urlHistory).push(window.location.href); // lưu url hiện tại
+	globalState.searching = false;
+	globalState.valueInputSearch= '',
+	handleLocalStorage("headerStore", globalState); // lưu storage trc lúc chuyển trang trc lúc chuyển trang
+
+	console.log('ở hàm handleCategoryClick ỉn ra category: ', category);
+	console.log('ở hàm handleCategoryClick ỉn ra globalState: ', globalState);
 	window.location.href = `./category.html?category=${category}`;
     // Thực hiện logic tìm kiếm hoặc gọi API tại đây với category và searchQuery
     // Ví dụ: getProductsByCategory(category, searchQuery);
 }
 
 
-
-const inputSearchAllElement = document.getElementById('search-all');
+// Ô SEARCH
 inputSearchAllElement.addEventListener('input', handleInput);
- // gán từ khóa tìm kiếm và đưa ra ngoài, ngay khi nhập liệu
-function handleInput() {
-	searchState.valueInputSearch = inputSearchAllElement.value;
+// Gán lại ô search sau tải lại lúc chuyển trang
+// inputSearchAllElement.value = headerStore.valueInputSearch || '';
+export let inputSearchValue = inputSearchAllElement.value
+
+// gán từ khóa tìm kiếm và đưa ra ngoài, ngay khi nhập liệu
+function handleInput(event) {
+	globalState.valueInputSearch = event.target.value; // Change input
+	console.log('handleInput globalState: ', globalState);
+	
+	handleLocalStorage("headerStore", globalState); // lưu storage trc lúc chuyển trang
+	console.log('handleInput headerStore: ', headerStore);
 }
-// Click nút tìm kiến gọi hàm bên category gọi lại list vs trạng thái search vs url khác
-const searchBtnElement = document.getElementById('search-btn');
-searchBtnElement.addEventListener('click', handleSearchProduct); // gán vào nút và gọi Api trang khác, thay cờ trạng th
+inputSearchAllElement.addEventListener('keydown', (event) => {
+	if (event.key === 'Enter') {
+	  handleSearchProduct();
+	}
+});
 
-
-// Gọi lại API get product ở category chỉ riêng cho search
+// Click nút tìm kiến gọi hàm trang category gọi lại list vs trạng thái search vs url khác
+searchBtnElement.addEventListener('click', handleSearchProduct);
+// Gọi lại API get product ở category chỉ riêng cho search,  thay cờ trạng thái
 async function handleSearchProduct() {
-	searchState.searching = true; // thay đổi thuộc tính trong đối tượng
-	handleLocalStorage("headerStore", searchState);
 
-	console.log('ở header in ra valueInputSearch ở heard:', searchState.valueInputSearch);
-	console.log('ở header in ra handleSearchProduct window.location.href:', window.location.href);
+	globalState.valueInputSearch = headerStore.valueInputSearch;
+	globalState.searching = true
+	globalState.urlHistory = headerStore.urlHistory; // Lấy arr url quá khứ
+	(globalState.urlHistory).push(window.location.href); // lưu url hiện tại
+	console.log('ở header in ra globalState: ', globalState);
 
-
-	// Lưu URL hiện tại vào mảng
-	searchState.urlHistory.push(window.location.href);
-	console.log('ở header in ra searchState: ', searchState);
+	handleLocalStorage("headerStore", globalState); // lưu storage trc lúc chuyển trang
 
 	// Điều hướng sang trang mới
 	// 'https://dummyjson.com/products/search?q=phone'
@@ -167,5 +191,11 @@ async function handleSearchProduct() {
 	setTimeout( async() => {
 		window.location.href = `./category.html`;
 		await getProduct(inputSearchAllElement.value);
-	}, 2000);
+		const url = new URL(window.location.href);
+		url.searchParams.set('q', inputSearchAllElement.value);
+ 		// Cập nhật URL trên thanh địa chỉ không tải lại trang
+		history.pushState({}, '', url);
+	}, 500);
+
+
 }

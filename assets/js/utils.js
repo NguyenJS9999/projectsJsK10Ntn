@@ -5,6 +5,10 @@ export function getParams(key) {
 }
 
 export function render(target, datas) {
+    console.log('Gọi hàm render UI list sản phẩm datas: ', datas);
+    if (target) {
+        target.innerHTML = ""; // Xóa cache UI cũ trước = F5
+    }
 	datas.forEach(item => {
 		const productElement = document.createElement('div');
 		productElement.innerHTML = /*html*/ `
@@ -20,7 +24,9 @@ export function render(target, datas) {
                 </div>
                 <p class="prd-description shorten-text-two-line ">Mô tả: ${item.description}</p>
 
-                <button id="get-detail" class="btn btn-danger" onclick="getDetail()" >Xem chi tiết</button>
+                <a id="get-detail" class="btn btn-danger" href='/product-detail.html?id=${item.id}'>
+                    Xem chi tiết
+                </a>
 
             </div>
         </div>
@@ -31,12 +37,13 @@ export function render(target, datas) {
 
 
 export function renderBreacumb(target, data) {
-    // console.log("renderBreacumb target: ", target, typeof target);
-    // console.log("renderBreacumb data: ", data, typeof data);
+    if (!target) {return}
+    console.log("renderBreacumb target: ", target, typeof target);
+    console.log("renderBreacumb data: ", data, typeof data);
     const breacumbInner = document.createElement('div');
     breacumbInner.classList.add('container');
     if (typeof data === 'string') {
-        // console.log("Giá trị là một chuỗi.");
+        console.log("Giá trị Breacumb là một chuỗi.");
 
         breacumbInner.innerHTML = /*html*/ `
         <ul>
@@ -50,7 +57,7 @@ export function renderBreacumb(target, data) {
 
     }
     if (typeof data === 'object' && data !== null && !Array.isArray(data)) {
-        // console.log("Giá trị là một object, không phải là mảng.");
+        console.log("Giá trị Breacumb là một object");
 
         breacumbInner.innerHTML = /*html*/ `
         <ul>
@@ -62,7 +69,7 @@ export function renderBreacumb(target, data) {
             <li><span class="text-lowercase text-capitalize">${data?.title}</span></li>
         </ul>
       `;
-        target.appendChild(breacumbInner);
+        // target.appendChild(breacumbInner);
     }
 
 }; // IIFE
@@ -75,7 +82,7 @@ export function handleLocalStorage( nameArrTodo, data) {
 }
 
 export function getLocalStorage(nameArrTodo) {
-	console.log('getLocalStorage');
+	// console.log('getLocalStorage');
 	const todosData = JSON.parse( localStorage.getItem(`${nameArrTodo}`) );
 	if (todosData) {
 		return todosData;
@@ -83,3 +90,11 @@ export function getLocalStorage(nameArrTodo) {
 		return [];
 	}
 }
+
+// export function showLoading() {
+//     document.getElementById('loading-overlay').style.display = 'flex';
+// }
+//
+// export function hideLoading() {
+//     document.getElementById('loading-overlay').style.display = 'none';
+// }

@@ -25,3 +25,4 @@ Hiển thị thông tin chi tiết sản phẩm (tên, giá, số lượng, thư
 ### 4. Hoàn thiện giao diện và các trang phụ khác (đăng ký, đăng nhập, about, contact, cart, checkout...) (1đ).
 
 ### 5. Giao diện đẹp mắt, có responsive cho màn hình mobile, tablet (1đ).
+    

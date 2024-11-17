@@ -57,6 +57,35 @@ ul {
 	border-radius: 0.25rem;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+/* Overlay bao phủ toàn màn hình khi loading */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none; /* Mặc định ẩn đi */
+}
+
+/* Thiết kế spinner cho hiệu ứng loading */
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 /* footer */
 #footer {
 	border-top: 1px solid #e2e2e2;
@@ -393,21 +422,23 @@ i {
 	box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1),
 		0 2px 6px 2px rgba(60, 64, 67, 0.15);
 	background-color: var(--white);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
 	min-height: 440px;
 	padding: 10px;
-	border-radius: 8px;
 	position: relative;
 	/* width: 100%; */
 }
 .product-item a {
+	/* border: 1px solid red; */
 	user-select: none;
 	display: block;
 	width: 100%;
 	height: 100%;
 	max-height: 45%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	min-height: 45%;
+	flex: 1;
 }
 .product-item:hover .prd-name {
 	color: var(--secondary-red);
@@ -549,13 +580,16 @@ svg {
 	display: flex;
 	justify-content: center;
 }
-/* #pagination-component nav {
-    border: 1px solid red;
-} */
+#pagination-component nav {
+    /* border: 1px solid red; */
+	width: 100%;
+}
 .pagination {
 	display: flex;
 	padding-left: 0;
 	list-style: none;
+	flex-wrap: wrap;
+	gap: 0.25rem;
 }
 .page-item a {
 	border: 1px solid var(--color-old-price);
@@ -569,6 +603,11 @@ svg {
 .page-item:first-child a,
 .page-item:last-child a {
 	border-radius: 0.25rem;
+}
+.pagination > .active {
+	border: var(--primary-red);
+	color: var(--primary-red);
+	background-color: var(--white);
 }
 
 /* Large screen (≥992px và <1200px) */

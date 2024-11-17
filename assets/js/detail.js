@@ -21,7 +21,7 @@ function renderDetail(target, data) {
         <sestion class="detail-heading-wrap">
             <div class="container">
             <div class="detail-heading-inner">
-                <h1 class="prd-heading">Ghế massage Toshiko T9</h1>
+                <h1 class="prd-heading">${data?.title}</h1>
 
                 <div class="prd-heading-rate">
                 <a href="#detailRate">
@@ -82,12 +82,18 @@ function renderDetail(target, data) {
                         <!--  -->
                         <div class="detail-box">
                         <div class="detail-attr stock-infor">
-                            <p>Còn ${data.stock} sản phẩm</p>
+                            <div>Sku: ${data?.sku}</div>
+                            <div class="${!data?.brand} && d-none" >${data?.brand}</div>
+                            <div>
+                                <span>Còn </span>
+                                <b>${data?.stock} </b>
+                                <span>sản phẩm</span>
+                            </div>
                             <div>
                                 <span>Chọn số lượng: </span>
                                 ${" "}
                                 <input type="number" min=1 max=${
-									data.stock
+									data?.stock
 								} value="1"/>
                             </div>
                         </div>

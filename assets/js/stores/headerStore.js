@@ -1,5 +1,5 @@
 
-export const searchState = {
+export let globalState = {
     urlHistory: [], // Mảng lưu lịch sử các URL
     searching: false, // Trạng thái cờ của chức năng search, hoạt động độc lập
     valueInputSearch: '',

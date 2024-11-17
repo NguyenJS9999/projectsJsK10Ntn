@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 	<link rel="stylesheet" href="./assets/css/index.scss" />
 	<link rel="stylesheet" href="./assets/css/main.css" />
+	<link rel="stylesheet" href="./assets/css/slider.css" />
 
 	<title>Shopee - Mua mọi thứ mỗi ngày</title>
 
@@ -18,7 +19,18 @@
 
 	<div class="header-component" id="header"></div>
 
-	<section id="header">
+	<div id="top-home-slider">
+		<div class="carousel">
+			<div class="carousel-inner"></div>
+			<div class="control">
+				<button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+				<button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+			</div>
+			<div class="process"></div>
+		</div>
+	</div>
+
+	<section id="index-new">
 		<div class="container pt-2">
 			<section class="frame-section">
 				<!-- banner -->
@@ -28,24 +40,29 @@
 				<!-- services -->
 			</section>
 
-			<!-- hàng bán chạy -->
-			<section class="frame-section " id="hot-sale-frame">
-				<div class="frame-title">Hot sale</div>
-				<div id="hot-sale-inner" class="list-item mt-3"></div>
+			<!-- Được yêu thích -->
+			<section class="frame-section " id="highly-rated-frame">
+				<div class="frame-title">Top rate</div>
+				<div id="highly-rated-inner" class="list-item mt-3"></div>
 			</section>
 
 			<!-- Giảm giá -->
 			<section class="frame-section" id="discount-percentage-frame">
-				<div class="frame-title">Discount</div>
+				<div class="frame-title">Top discount</div>
 				<div id="discount-percentage-inner" class="list-item mt-3"></div>
 			</section>
 
-			<!-- dành cho nữ -->
-			<section class="frame-section" id="danh-cho-nu">
+			<!-- hàng mới về -->
+			<section class="frame-section" id="new-arrivals">
+				<div class="frame-title">Top new product</div>
+				<div id="new-arrivals-inner" class="list-item mt-3"></div>
 			</section>
 		</div>
 	</section>
 
+	<!-- <div id="loading-overlay" class="loading-overlay">
+		<div class="spinner"></div>
+	</div> -->
 
 	<footer id="component-footer"></footer>
 
@@ -53,10 +70,10 @@
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 
+	<script type="module" src="./src/components/componentHeader/componentHeader.js"></script>
 	<script type="module" src="./assets/js/main.js"></script> <!-- Main logic -->
 	<script type="module" src="./assets/js/slide.js"></script>
 	<script type="module" src="./src/components/componentFooter/componentFooter.js"></script>
-	<script type="module" src="./src/components/componentHeader/componentHeader.js"></script>
 
 
 
